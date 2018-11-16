@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>game</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="http://web.virtuousquare.com/wp-content/themes/default/tuto/game/js/jquery-1.4.2.js"></script>
+<script src="http://web.virtuousquare.com/wp-content/themes/default/tuto/game/js/jquery-path.js"></script>
+
+<script src="http://web.virtuousquare.com/wp-content/themes/default/tuto/game/js/jquery-easing.js"></script>
+<body>
+
+    <div class="bg-game">
+        <div class="terrain">
+            <img class="bg1" src="img/BG.png" alt="">
+            <img class="bg1" src="img/BG.png" alt="">
+            <div class="tr1">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+                <img class="tr1_" src="img/Tiles/2.png" alt="">
+            </div>
+            <div class="perso">
+                <img id="default" src="img/personnage/Idle__009.png" alt="">
+
+                <img id="1r" src="md/1.png" />
+    
+                <img id="2r" src="md/2.png" />
+                
+                <img id="3r" src="md/3.png" />
+                
+                <img id="4r" src="md/4.png" />
+
+                <img id="5r" src="md/5.png" />
+
+                <!-- <img id="vs" class="vm" style="opacity:0"  src="img/personnage/Run__001.png" alt=""> -->
+            </div>
+            <div class="crute">
+                <img src="img/Object/Crate.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="my_elem">
+        test
+    </div>
+  <script>
+    $(function() {
+        bp = 0;
+        p = 495;
+        i = 0;
+        bn = 63;
+        function course(){
+            if(i += 1){
+                jQuery("#" + i + "r").css("opacity",1);
+                
+                var c = $(".crute").offset().left;
+
+                var z = $(".perso>img").offset().left;
+
+                var cz = c-z;
+
+                if(cz <= 70){
+                    $(".crute").css("left","285");
+                }
+                if(cz > 70){
+                    $('.crute').css("left", p--);
+                }
+ 
+
+                l = i - 1;
+                jQuery("#" + l  + "r").css("opacity",0);
+                if(i == 6){
+                    i = 1;
+                    jQuery("#" + i + "r").css("opacity",1);
+                    l = i - 1;
+                    jQuery("#" + l  + "r").css("opacity",0);
+                }
+            }
+        }
+        // function bgcourse(){
+        //     jQuery("#default").css("opacity",0);
+        //     $('.bg1').animate({left: "-=50"}, 2500, 'linear', function(){
+        //     $('.bg1').css('left',0); });
+        // } 
+        
+        function bgcourse(){
+            jQuery("#default").css("opacity",0);
+            $('.bg1').css('left',bp--);
+        }
+
+        for(var u=1 ; u<6; u++){
+            jQuery("#" + u + "r").css("opacity",0);
+        }
+        
+        $( document ).keydown(function(e){
+            if(e.which == 39){
+                bgcourse();
+                course();
+            }
+            if(e.which == 37){
+            $('.bg1').animate({left: '-=360'}, 1000, 'linear', function(){
+            $('.bg1').css('left',0); });
+            vjX = parseInt($('#vj').css('left'));
+            if (vjX){
+            $('#vj').css('left', vjX-30);
+            }
+            }
+
+            if(e.which == 38){
+                saut();
+            }
+            if(e.which == 40){
+                alert('40');
+            }
+
+        });
+    // Jump function
+        function saut(){
+            $('.perso').css({position : 'relative', display : 'table-row'});
+            var bo = $('.perso>img').position().top;
+            $('.perso>img')
+            .css({}).stop(true, true)
+            .animate({
+                path: new $.path.bezier(bezier_params)
+            },{
+                duration : 500
+                , easing   : 'linear'
+                , queue    : false
+            });
+        }
+
+        var pos = 5; 
+
+        var bezier_paramsdos = { 
+            start: {
+            x: 0,
+            y: 3,
+            angle: 350
+            },
+            end: {
+            x: 60,
+            y: 0,
+            angle: 100,
+            length: -4
+            }
+        }
+        var bezier_params = {
+            start: {
+            x: 293,
+            y: 440,
+            angle: 10
+            },
+            end: {
+            x: 293 ,
+            y: 485,
+            angle: 0,
+            length: 4
+            }
+        }
+        
+        // function saut(){
+        // var pos = $(".perso>#1r").position().left; 
+        // var bezier_paramsdos = { 
+        //     start: {
+        //     x: pos,
+        //     y: 3,
+        //     angle: 350
+        //     },
+        //     end: {
+        //     x: pos - 60,
+        //     y: 377,
+        //     angle: 100,
+        //     length: -4
+        //     }
+        // }
+        // var bezier_params = {
+        //     start: {
+        //     x: pos,
+        //     y: 377,
+        //     angle: 10
+        //     },
+        //     end: {
+        //     x: pos + 60,
+        //     y: 377,
+        //     angle: 80,
+        //     length: 4
+        //     }
+        // }
+
+        // if (event.keyCode == '38') { 
+        //     $(".perso>#1r").stop(true, true).css({	
+        //         }).animate({
+        //         path: new $.path.bezier(bezier_params)
+        //     }, 500,function(){
+        //         $(".perso>#1r").css({})
+        //     });
+        // }
+        // }
+
+    });
+
+
+
+  </script>
+</body>
+</html>

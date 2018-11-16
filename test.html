@@ -1,0 +1,141 @@
+<!doctype html>
+
+<head>
+
+<head>
+
+<title>La plus simple des galerie photos en $</title>
+
+
+<style>
+
+
+
+    /*Style général de la page*/
+    
+    body {font:14px verdana, sans-serif;background:#000000;color:#C0C0C0;font-weight:bold;overflow:hidden;}
+    
+    
+    
+    /*Position de la galerie*/
+    
+    #videg {position:absolute;left:30%;top:50%;cursor:pointer;}
+    
+    
+    
+    /*Dimensionnement des images et fixation du z-index à 1 (Important)*/
+    
+    #videg img {width:150px;height:150px;position:absolute;left:0;top:0;z-index:1}
+    
+    
+    
+    /*Style des différents corps de texte de la page*/
+    
+    #page {font:14px verdana, sans-serif;color:#C0C0C0;font-weight:bold;position:absolute;left:100px;top:100px;background:#000000;}
+    
+    
+    
+    #mess {position:absolute;left:22%;top:80%;cursor:pointer;}
+    
+    </style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+<script>
+
+
+    //Evite les conflits avec d'éventuels autres plugins lies à la page
+    
+    jQuery.noConflict();
+    
+    //Implémentation des fonctions au chargement de la page
+    
+    jQuery(document).ready(function() {
+        
+            
+   
+        for(var u=1 ; u<5; u++){
+            jQuery("#" + u + "r").css("opacity",0);
+            }
+             i = 0;
+            jQuery( document ).keydown(function(e){   
+                if(e.which == 39){
+                        if(i += 1){
+                            jQuery("#" + i + "r").css("opacity",1);
+                            l = i - 1;
+                            jQuery("#" + l  + "r").css("opacity",0);
+                            if(i == 5){
+                                i = 1;
+                                jQuery("#" + i + "r").css("opacity",1);
+                                l = i - 1;
+                                jQuery("#" + l  + "r").css("opacity",0);
+                            }
+                        }
+                    }
+            });
+
+});
+
+    </script>
+
+
+
+
+</head>
+
+<body>
+    <p>Keypresses: <span>0</span></p>
+    <p style="color:#C0C0C0;font-size:28px;">AFFICHAGE ALEATOIRE D'IMAGES !</p>    
+
+    <div id="page" >
+    
+    <font style="color:#FFFF00">AFFICHEZ VOS PHOTOS AU HASARD<br>une galerie photo ultra-simple !!! </font><br>
+    
+    Affichez le code source ou cliquez <a href="newsletter.php" style="color:#FFFF00;text-decoration:none">ici</a> pour recevoir le tutoriel par mail.<br><br>
+    
+    </div>
+    
+    <!--Div contenant les images-->
+    
+    <div id="videg" />
+    
+    <img id="1r" src="md/1.png" />
+    
+    <img id="2r" src="md/2.png" />
+    
+    <img id="3r" src="md/3.png" />
+    
+    <img id="4r" src="md/4.png" />
+    
+    <!-- <img id="5r" src="md/5.png" />
+    
+    <img id="6r" src="md/6.png" />
+    
+    <img id="7r" src="md/7.png" />
+    
+    <img id="8r" src="md/8.png" />
+    
+    <img id="9r" src="md/9.png" />
+    
+    <img id="10r" src="md/10.png" />
+    
+    <img id="11r" src="11.png" />
+    
+    <img id="11r" src="12.png" />
+    
+    <img id="12r" src="13.png" /> -->
+    
+    </div>
+    
+    <br>
+    
+    <div id="mess">AFFICHAGE ALEATOIRE D'IMAGES<br></div>
+
+</body>
+
+
+
+    
+</html>

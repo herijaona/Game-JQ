@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+}
+.bg-game .bg1{
+    width: 100%;
+    position: relative;
+}
+.bg-game{
+    text-align: center;
+    background: #aba6a6;
+}
+.terrain{
+    width: 690px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    top: -307px;
+}
+.tr1{
+    position: absolute;
+    bottom: 0px;
+    margin: 0 auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    overflow: hidden;
+}
+.tr1_{
+    display: inline-flex;
+    width: 100%;
+}
+.perso{
+    position: absolute;
+    bottom: 269px;
+}
+.perso img{
+    width: 71px;
+    height: 150px;
+    position: absolute;
+    left: 293px;
+    top: 0;
+    z-index: 1;
+}
+#vj{
+    position: relative;
+}
+.crute{
+    position: absolute;
+    z-index: 9;
+    bottom: 116px;
+    z-index: 99999;
+    left: 495px;
+}
